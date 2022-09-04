@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Detail";
+}
+
+@model ProductViewModel
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="card">
+             <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <div class="badge bg-success" style="color:white;">Kategori : @Model.Category.Name</div>
+                 
+            </div>
+
+            <img src="@Model.StockPictureUrl" class="card-img-top" />
+
+        </div>
+
+    </div>
+
+    <div class="col-md-5" style="margin-top:200px; width:500px;">
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-header">@Model.Name</h3><br />
+                <h4 class="card-title">Fiyat: @Model.Price TL</h4>
+                
+
+                <div class="d-grid">
+                <a asp-controller="Basket" asp-action="AddBasketItem"
+                asp-route-courseId="@Model.Id" class="btn " style="background:#8b658b; color:white;">Sepete Ekle</a>
+                </div>
+                <br />
+                <h4>Ürün Açıklaması</h4>
+                <p class="card-text">@Model.Description</p>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+</div>
+

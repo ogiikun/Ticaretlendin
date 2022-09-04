@@ -1,0 +1,68 @@
+version: '3.8'
+services:
+  catalogdb:
+    image: mongo
+
+  basketdb:
+    image: redis
+  
+  identitydb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+
+  catalog.api:
+    image: catalog_api_image
+    build: 
+      context: .
+      dockerfile: Services/Catalog/CatalogApi/Dockerfile
+
+
+  identityserver.api:
+    image: identityserver_api_image
+    build:
+      context: .
+      dockerfile: IdentityServer/IdentityServer/Dockerfile
+
+  basket.api:
+    image: basket_api_image
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket/Dockerfile 
+      
+  photostock.api:
+    image: photostock_api_image
+    build:
+      context: .
+      dockerfile: Services/PhotoStock/PhotoStock/Dockerfile  
+
+  fakepayment.api:
+    image: fakepayment_api_image
+    build:
+      context: .
+      dockerfile: Services/FakePayment/FakePayment/Dockerfile  
+
+  order.api:
+    image: order_api_image
+    build:
+      context: .
+      dockerfile: Services/Order/Order.Api/Dockerfile  
+
+  gateway.api:
+    image: gateway_api_image
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile 
+
+  aspnetcoremvc.web:
+    image: aspnetcoremvc.web_image
+    build:
+      context: .
+      dockerfile: FrontEnds/WEBApi/Dockerfile 
+
+volumes:
+  catalogdb_volume:
+  identitydb_volume:
+  orderdb_volume:
+  
